@@ -37,18 +37,16 @@ const LoginForm = () => {
                     Email aziendale
                   </Form.Label>
                   <InputGroup>
-                    <InputGroup>
-                      <InputGroup.Text className="bg-light text-muted">
-                        <i className="bi bi-envelope"></i>
-                      </InputGroup.Text>
-                      <Form.Control
-                        type="pec"
-                        placeholder="nome@azienda.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                      />
-                    </InputGroup>
+                    <InputGroup.Text className="bg-light text-muted">
+                      <i className="bi bi-envelope"></i>
+                    </InputGroup.Text>
+                    <Form.Control
+                      type="pec"
+                      placeholder="nome@azienda.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
                   </InputGroup>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">

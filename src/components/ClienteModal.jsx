@@ -169,6 +169,7 @@ const ClienteModal = ({ show, handleClose }) => {
                     Tipo Cliente *
                   </FormLabel>
                   <FormControl
+                    as="select"
                     name="tipoCliente"
                     value={formData.tipoCliente}
                     onChange={handleChange}
