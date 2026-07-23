@@ -1,8 +1,8 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import LoginForm from "./components/LoginForm";
 import { Container } from "react-bootstrap";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       >
         <header></header>
         <main className="flex-grow-1 d-flex align-items-center justify-content-center">
-          <LoginForm />
+          <Dashboard />
         </main>
         <footer></footer>
       </Container>

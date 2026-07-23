@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import {
   Col,
   Form,
   FormControl,
   FormGroup,
   FormLabel,
+  FormSelect,
   Modal,
   ModalBody,
   ModalHeader,
   ModalTitle,
   Row,
 } from "react-bootstrap";
+// import { addCliente, updateCliente, clearClienteInModifica } from "../redux/clientiSlice";
 
 const initialFormState = {
   ragioneSociale: "",
@@ -27,12 +29,13 @@ const initialFormState = {
 };
 
 const ClienteModal = ({ show, handleClose }) => {
-  const dispatch = useDispatch();
-  const clienteInModifica = useSelector(
-    (state) => state.clienti.clienteInModifica,
-  );
+  // const dispatch = useDispatch();
+  // const clienteInModifica = useSelector( (state) => state.clienti.clienteInModifica);
+
+  const clienteInModifica = null; // da eliminare questa riga una volta configurato redux store
   const [formData, setFormData] = useState(initialFormState);
 
+  /*
   useEffect(() => {
     if (clienteInModifica) {
       setFormData(clienteInModifica);
@@ -40,6 +43,7 @@ const ClienteModal = ({ show, handleClose }) => {
       setFormData(initialFormState);
     }
   }, [clienteInModifica, show]);
+  */
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,16 +52,18 @@ const ClienteModal = ({ show, handleClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    /*
     if (clienteInModifica) {
       dispatch(updateCliente(formData));
     } else {
       dispatch(addCliente(formData));
     }
-    onclose();
+      */
+    onClose();
   };
 
   const onClose = () => {
-    dispatch(clearClienteInModifica());
+    // dispatch(clearClienteInModifica());
     setFormData(initialFormState);
     handleClose();
   };
@@ -168,17 +174,18 @@ const ClienteModal = ({ show, handleClose }) => {
                   <FormLabel className=" small fw-semibold">
                     Tipo Cliente *
                   </FormLabel>
-                  <FormControl
+                  <FormSelect
                     as="select"
                     name="tipoCliente"
                     value={formData.tipoCliente}
                     onChange={handleChange}
                     required
-                  />
-                  <option value="PA">PA</option>
-                  <option value="SAS">SAS</option>
-                  <option value="SRL">SRL</option>
-                  <option value="SPA">SPA</option>
+                  >
+                    <option value="PA">PA</option>
+                    <option value="SAS">SAS</option>
+                    <option value="SRL">SRL</option>
+                    <option value="SPA">SPA</option>
+                  </FormSelect>
                 </FormGroup>
               </Col>
               <Col md={6}>
