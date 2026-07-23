@@ -5,9 +5,11 @@ export const clientiSlice = createSlice({
   initialState: {
     value: [],
   },
-  reducers: {},
+  reducers: {
+    fetchClienti: (state, action) => {
+      state.value += action.payload
+    },
+  },
 })
-
-export const { addClienti } = clientiSlice.actions
 
 export default clientiSlice.reducer
