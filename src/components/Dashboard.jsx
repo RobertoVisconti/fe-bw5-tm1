@@ -52,7 +52,6 @@ const Dashboard = () => {
 
   return (
     <Container className="shadow-sm border-0 py-4">
-      ${console.log(listaClienti)}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h3>Gestione Clienti</h3>
         <Button variant="primary" onClick={() => setShowModal(true)}>
@@ -78,14 +77,14 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {clienti.length === 0 ? (
+                {listaClienti.length === 0 ? (
                   <tr>
                     <td colSpan={6} className="text-center py-4 text-muted">
                       Nessun cliente presente nel database.
                     </td>
                   </tr>
                 ) : (
-                  clienti.map((c) => (
+                  listaClienti.map((c) => (
                     <tr key={c.id}>
                       <td className="fw-semibold">{c.ragioneSociale}</td>
                       <td>
