@@ -28,7 +28,6 @@ export const handleFetchClienti = () => {
           type: FETCH_CLIENTI,
           payload: data.content,
         })
-        console.log(data.content)
       })
       .catch((ex) => console.log(ex))
   }

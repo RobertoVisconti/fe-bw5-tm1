@@ -32,6 +32,7 @@ const Dashboard = () => {
 
   // const dispatch = useDispatch();
   // const { lista: clienti, loading, error, } = useSelector((state) => state.clienti);
+  const listaClienti = useSelector((reduxStore) => reduxStore.clienti.clienti)
 
   const [clienti, setClienti] = useState(mockClienti) // da eliminare questa riga una volta attivato redux
   const loading = false // da eliminare questa riga una volta attivato redux
@@ -51,6 +52,7 @@ const Dashboard = () => {
 
   return (
     <Container className="shadow-sm border-0 py-4">
+      ${console.log(listaClienti)}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h3>Gestione Clienti</h3>
         <Button variant="primary" onClick={() => setShowModal(true)}>
