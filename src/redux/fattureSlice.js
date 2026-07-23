@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-export const clientiSlice = createSlice({
-  name: "clienti",
+export const fattureSlice = createSlice({
+  name: "fatture",
   initialState: {
     value: [],
   },
   reducers: {
-    fetchClienti: (state, action) => {
+    fetchFatture: (state, action) => {
       state.value += action.payload
     },
   },
 })
 
-export default clientiSlice.reducer
+export default fattureSlice.reducer
