@@ -12,4 +12,6 @@ export const fattureSlice = createSlice({
   },
 })
 
+export const { fetchFatture } = fetchFatture.action
+
 export default fattureSlice.reducer

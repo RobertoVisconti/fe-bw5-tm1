@@ -9,7 +9,10 @@ export const clientiSlice = createSlice({
     fetchClienti: (state, action) => {
       state.value += action.payload
     },
+    deleteClienti: (state, action) => {},
   },
 })
+
+export const { fetchClienti, deleteClienti } = clientiSlice.actions
 
 export default clientiSlice.reducer
