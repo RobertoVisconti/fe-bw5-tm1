@@ -1,18 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { FETCH_CLIENTI, DELETE_CLIENTE } from "../../actions"
 
-export const clientiSlice = createSlice({
-  name: "clienti",
-  initialState: {
-    value: [],
-  },
-  reducers: {
-    fetchClienti: (state, action) => {
-      state.value += action.payload
-    },
-    deleteClienti: (state, action) => {},
-  },
-})
+const initialState = {
+  clienti: [],
+}
 
-export const { fetchClienti, deleteClienti } = clientiSlice.actions
+const reducerClienti = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_CLIENTI:
+      return {
+        ...state,
+        clienti: action.payload,
+      }
 
-export default clientiSlice.reducer
+    case DELETE_CLIENTE:
+      return {
+        state,
+      }
+
+    default:
+      return state
+  }
+}
+
+export default reducerClienti
