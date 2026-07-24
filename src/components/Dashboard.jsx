@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import {
   Badge,
   Button,
@@ -7,11 +7,12 @@ import {
   Container,
   Spinner,
   Table,
-} from "react-bootstrap"
-import { useDispatch, useSelector } from "react-redux"
+} from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 
-import ClienteModal from "./ClienteModal"
-import { fetchClientiAction, handleFetchClienti } from "../redux/actions"
+import ClienteModal from "./ClienteModal";
+import { fetchClientiAction, handleFetchClienti } from "../redux/actions";
+import { useNavigate } from "react-router-dom";
 // import { deleteCliente, setClienteInModifica } from "../redux/clientiSlice";
 
 // da eliminare mock clienti una volta che si attiva redux
@@ -25,30 +26,31 @@ const mockClienti = [
     nomeContatto: "Mario",
     cognomeContatto: "Rossi",
   },
-]
+];
 
 const Dashboard = () => {
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // const dispatch = useDispatch();
   // const { lista: clienti, loading, error, } = useSelector((state) => state.clienti);
-  const listaClienti = useSelector((reduxStore) => reduxStore.clienti.clienti)
+  const listaClienti = useSelector((reduxStore) => reduxStore.clienti.clienti);
 
-  const [clienti, setClienti] = useState(mockClienti) // da eliminare questa riga una volta attivato redux
-  const loading = false // da eliminare questa riga una volta attivato redux
+  const [clienti, setClienti] = useState(mockClienti); // da eliminare questa riga una volta attivato redux
+  const loading = false; // da eliminare questa riga una volta attivato redux
 
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    dispatch(handleFetchClienti())
-  }, [dispatch])
+    dispatch(handleFetchClienti());
+  }, [dispatch]);
 
   const handleDelete = (id) => {
     if (window.confirm("Sei sicuro di voler eliminare questo cliente ?")) {
       // dispatch(deleteCliente(id));
-      setClienti(clienti.filter((c) => c.id !== id)) // da eliminare questa riga una volta attivato redux
+      setClienti(clienti.filter((c) => c.id !== id)); // da eliminare questa riga una volta attivato redux
     }
-  }
+  };
 
   return (
     <Container className="shadow-sm border-0 py-4">
@@ -85,7 +87,11 @@ const Dashboard = () => {
                   </tr>
                 ) : (
                   listaClienti.map((c) => (
-                    <tr key={c.id}>
+                    <tr
+                      key={c.id}
+                      style={{ cursor: "pointer" }}
+                      onClick={() => navigate(`/clienti/${c.id}`)}
+                    >
                       <td className="fw-semibold">{c.ragioneSociale}</td>
                       <td>
                         <code>{c.partitaIva}</code>
@@ -104,7 +110,7 @@ const Dashboard = () => {
                           className="me-2"
                           onClick={() => {
                             // dispatch(setClienteInModifica(c));
-                            setShowModal(true)
+                            setShowModal(true);
                           }}
                         >
                           <i className="bi bi-pencil"></i>
@@ -127,7 +133,7 @@ const Dashboard = () => {
       </Card>
       <ClienteModal show={showModal} handleClose={() => setShowModal(false)} />
     </Container>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
